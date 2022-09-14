@@ -8,7 +8,8 @@ fun main() {
     Noise
 }
 
-var t = 0f
+var tx = 0f
+var ty = 0f
 var x = width / 2f
 var y = height / 2f
 
@@ -24,8 +25,10 @@ object Noise : PApplet() {
 
     override fun draw() {
         background(0.4f)
-        x = map(noise(t), 0f, 1f, 0f, width.toFloat())
+        x = map(noise(tx), 0f, 1f, 0f, width.toFloat())
+        y = map(noise(ty), 0f, 1f, 0f, height.toFloat())
         ellipse(x, y, 50f, 50f)
-        t += 0.05f
+        tx += 0.05f
+        ty += 0.01f
     }
 }

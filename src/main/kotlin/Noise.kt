@@ -1,19 +1,19 @@
-package noise
-
 import processing.core.PApplet
-import random_walker.RandomWalker.height
-import random_walker.RandomWalker.width
+import RandomWalker.height
+import RandomWalker.width
 
 fun main() {
     Noise
 }
 
-var tx = 0f
-var ty = 0f
-var x = width / 2f
-var y = height / 2f
 
 object Noise : PApplet() {
+    var tx = 0f
+    var ty = 0f
+    var x = width / 2f
+    var y = height / 2f
+
+
     init {
         this.setSize(400, 400)
         this.runSketch()

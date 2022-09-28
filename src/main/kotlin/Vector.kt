@@ -3,7 +3,6 @@ import processing.core.PVector
 
 fun main(){
     Vector
-    // yoo
 }
 
 object Vector : PApplet() {

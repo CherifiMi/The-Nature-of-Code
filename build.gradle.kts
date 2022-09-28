@@ -20,8 +20,6 @@ dependencies {
     implementation(files("libs/gluegen-rt-natives-windows-i586.jar"))
     implementation(files("libs/jogl-all-natives-windows-amd64.jar"))
     implementation(files("libs/jogl-all.jar"))
-
-    testImplementation(kotlin("test"))
 }
 
 tasks.test {

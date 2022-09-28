@@ -3,7 +3,6 @@ import processing.core.PVector
 
 fun main(){
     Vector
-    sffzs
 }
 
 object Vector : PApplet() {

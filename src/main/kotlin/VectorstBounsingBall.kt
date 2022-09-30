@@ -33,11 +33,14 @@ object VectorstBounsingBall : PApplet() {
             b.draw()
         }
         filter(BLUR, 1f)
-        filter(ERODE)
+        filter(DILATE)
     }
 
     override fun mouseClicked() {
         balls.add(Ball())
+        if (balls.size>5){
+            balls.removeAt(0)
+        }
         println(balls)
     }
 }

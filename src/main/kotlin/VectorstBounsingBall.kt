@@ -26,12 +26,14 @@ object VectorstBounsingBall : PApplet() {
     }
 
     override fun draw() {
-        background(100f)
+        //background(100f)
         for(b in balls){
             b.move()
             b.bounce()
             b.draw()
         }
+        filter(BLUR, 1f)
+        filter(ERODE)
     }
 
     override fun mouseClicked() {
@@ -49,8 +51,8 @@ class Ball() {
     }
 
     fun draw() {
-        fill(255f)
-        stroke(0f)
+        fill(random(255f),random(255f),random(255f))
+        stroke(random(255f),random(255f),random(255f))
         ellipse(pos.x, pos.y, 20f, 20f)
     }
 

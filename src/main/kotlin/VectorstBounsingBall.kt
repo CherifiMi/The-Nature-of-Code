@@ -27,7 +27,6 @@ object VectorstBounsingBall : PApplet() {
     }
 
     override fun draw() {
-        //background(100f)
         for (b in balls) {
             b.move()
             b.bounce()
@@ -39,7 +38,7 @@ object VectorstBounsingBall : PApplet() {
 
     override fun mouseClicked() {
         balls.add(Ball())
-        if (balls.size > 15) {
+        if (balls.size > 8) {
             balls.removeAt(0)
         }
     }

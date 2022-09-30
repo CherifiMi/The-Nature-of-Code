@@ -5,7 +5,7 @@ import RandomWalker.random
 import RandomWalker.width
 import processing.core.PApplet
 
-fun main(){
+fun main() {
     RandomWalker
 }
 
@@ -27,14 +27,15 @@ object RandomWalker : PApplet() {
 }
 
 object Walker {
-    var x = width/2f
-    var y = height/2f
+    var x = width / 2f
+    var y = height / 2f
 
-    fun render(){
+    fun render() {
         fill(0)
         point(x, y)
     }
-    fun walk(){
+
+    fun walk() {
         x += random(-1f, 1f)
         y += random(-1f, 1f)
     }

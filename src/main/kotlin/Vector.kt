@@ -6,14 +6,17 @@ fun main(){
 }
 
 object Vector : PApplet() {
+    //region
     init {
         this.setSize(400, 400)
         this.runSketch()
     }
-
+    //endregion
     var pos= PVector(0f, 0f)
 
     override fun draw() {
+        background(255f)
+
         stroke(0)
         strokeWeight(2f)
         fill(125f)
@@ -21,5 +24,6 @@ object Vector : PApplet() {
 
         pos.x ++
         pos.y ++
+
     }
 }

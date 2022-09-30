@@ -48,6 +48,8 @@ class Ball() {
     var pos = PVector(width / 2f + random(-50f, 50f), height / 2f + random(-50f, 50f))
     var velocity = PVector(2.5f + random(-3f, 3f), -2f + random(-3f, 3f))
     var color = PVector(random(50f, 255f), random(50f, 200f), random(100f, 255f))
+    var unlimitid = false
+
     fun move() {
         pos = pos.add(velocity)
     }
@@ -62,13 +64,13 @@ class Ball() {
 
         if (pos.x >= width.toFloat() || pos.x <= 0f) {
             velocity.x = velocity.x * -1
-            if (velocity.x.absoluteValue < 35) {
+            if (unlimitid || velocity.x.absoluteValue < 20) {
                 velocity.x += velocity.x * 0.05f
             }
         }
         if (pos.y >= height.toFloat() || pos.y <= 0f) {
             velocity.y = velocity.y * -1
-            if ( velocity.y.absoluteValue < 35){
+            if (unlimitid ||  velocity.y.absoluteValue < 20){
                 velocity.y += velocity.y * 0.05f
             }
         }

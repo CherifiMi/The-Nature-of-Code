@@ -24,6 +24,5 @@ object Vector : PApplet() {
 
         pos.x ++
         pos.y ++
-
     }
 }

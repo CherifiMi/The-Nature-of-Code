@@ -18,19 +18,21 @@ object VectorstBounsingBall : PApplet() {
         this.runSketch()
     }
 
-    lateinit var b: Ball
+    lateinit var balls: ArrayList<Ball>
 
     override fun setup() {
-        b = Ball()
-        var a = Ball()
-
-        kotlin.io.println("$b  $a")
+        background(100f)
+        balls = arrayListOf(Ball(), Ball())
+        println(balls)
     }
 
     override fun draw() {
-        b.move()
-        b.bounce()
-        b.draw()
+        background(100f)
+        for(b in balls){
+            b.move()
+            b.bounce()
+            b.draw()
+        }
     }
 }
 
@@ -43,7 +45,6 @@ class Ball() {
     }
 
     fun draw() {
-        background(100f)
         fill(255f)
         stroke(0f)
         ellipse(pos.x, pos.y, 20f, 20f)

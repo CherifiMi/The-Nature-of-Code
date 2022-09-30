@@ -12,7 +12,7 @@ object Vector : PApplet() {
         this.runSketch()
     }
     //endregion
-    var pos= PVector(0f, 0f)
+    var pos= PVector()
 
     override fun draw() {
         background(255f)
@@ -22,7 +22,6 @@ object Vector : PApplet() {
         fill(125f)
         ellipse(pos.x, pos.y, 48f, 48f)
 
-        pos.x ++
-        pos.y ++
+        pos = pos.add(1f, 1f)
     }
 }

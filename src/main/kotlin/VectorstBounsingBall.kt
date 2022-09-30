@@ -18,12 +18,11 @@ object VectorstBounsingBall : PApplet() {
         this.runSketch()
     }
 
-    lateinit var balls: ArrayList<Ball>
+    lateinit var balls: MutableList<Ball>
 
     override fun setup() {
         background(100f)
-        balls = arrayListOf(Ball(), Ball())
-        println(balls)
+        balls = mutableListOf()
     }
 
     override fun draw() {
@@ -33,6 +32,11 @@ object VectorstBounsingBall : PApplet() {
             b.bounce()
             b.draw()
         }
+    }
+
+    override fun mouseClicked() {
+        balls.add(Ball())
+        println(balls)
     }
 }
 

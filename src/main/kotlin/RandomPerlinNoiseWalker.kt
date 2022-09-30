@@ -82,5 +82,4 @@ object RandomPerlinNoiseWalker : PApplet() {
             '6' -> filter[0] = 6
         }
     }
-
 }

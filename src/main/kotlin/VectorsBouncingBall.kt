@@ -1,19 +1,18 @@
-import VectorstBounsingBall.random
-import VectorstBounsingBall.background
-import VectorstBounsingBall.ellipse
-import VectorstBounsingBall.fill
-import VectorstBounsingBall.height
-import VectorstBounsingBall.stroke
-import VectorstBounsingBall.width
+import VectorsBouncingBall.random
+import VectorsBouncingBall.ellipse
+import VectorsBouncingBall.fill
+import VectorsBouncingBall.height
+import VectorsBouncingBall.stroke
+import VectorsBouncingBall.width
 import processing.core.PApplet
 import processing.core.PVector
 import kotlin.math.absoluteValue
 
 fun main() {
-    VectorstBounsingBall
+    VectorsBouncingBall
 }
 
-object VectorstBounsingBall : PApplet() {
+object VectorsBouncingBall : PApplet() {
     init {
         this.setSize(400, 400)
         this.runSketch()

@@ -1,3 +1,5 @@
+package I_randomnes
+
 import processing.core.PApplet
 import RandomWalker.height
 import RandomWalker.width

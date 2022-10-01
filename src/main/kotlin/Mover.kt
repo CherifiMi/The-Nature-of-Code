@@ -16,9 +16,8 @@ object Mover : PApplet() {
     }
 
     override fun draw() {
-        //background(255)
+        background(255)
         M.update()
-        M.ecc()
         M.edges()
         M.display()
     }
@@ -27,7 +26,7 @@ object Mover : PApplet() {
 object M{
     val loc = PVector(width/2f, height/2f)
     val velocity = PVector()
-    val acceleration = PVector()
+    val acceleration = PVector(.1f, 0f)
 
     fun update() {
         velocity.add(acceleration)

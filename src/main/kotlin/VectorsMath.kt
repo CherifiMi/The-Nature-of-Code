@@ -27,10 +27,9 @@ object VectorsMath : PApplet() {
         val mouse= PVector(mouseX.toFloat(), mouseY.toFloat())
         val center = PVector(width/2f, height/2f)
         mouse.sub(center)
-        if (scale.x>=-300f){
+        if (scale.x<=mouse.mag()*2){
             scale.mult(1.02f)
         }
-        kotlin.io.println(scale)
         line(0f, 0f, mouse.x, mouse.y)
     }
 }

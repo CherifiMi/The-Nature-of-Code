@@ -26,7 +26,7 @@ object Mover : PApplet() {
 object M{
     val loc = PVector(width/2f, height/2f)
     val velocity = PVector()
-    var acceleration = PVector(0f, 0f)
+    var acceleration = PVector(0f, 0f).limit(5f)
 
     fun update() {
         acceleration = PVector.random2D()
@@ -37,7 +37,7 @@ object M{
         if (loc.x > width) loc.x = 0f
         if (loc.x < 0) loc.x = width.toFloat()
         if (loc.y > height) loc.y = 0f
-        if (loc.x < 0) loc.y = height.toFloat()
+        if (loc.y < 0) loc.y = height.toFloat()
     }
     fun display() {
         ellipse(loc.x, loc.y, 50f, 50f)

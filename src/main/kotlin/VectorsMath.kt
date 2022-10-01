@@ -11,6 +11,7 @@ object VectorsMath : PApplet() {
         this.runSketch()
     }
     var pos = PVector()
+    var scale = PVector(2f, 2f)
 
     override fun setup() {
 
@@ -21,12 +22,15 @@ object VectorsMath : PApplet() {
         strokeWeight(2f)
         stroke(0)
         translate(width/2f, height/2f)
-        ellipse(pos.x, pos.y,4f,4f)
+        ellipse(pos.x, pos.y, scale.x, scale.y)
 
         val mouse= PVector(mouseX.toFloat(), mouseY.toFloat())
         val center = PVector(width/2f, height/2f)
         mouse.sub(center)
-
+        if (scale.x>=-300f){
+            scale.mult(1.02f)
+        }
+        kotlin.io.println(scale)
         line(0f, 0f, mouse.x, mouse.y)
     }
 }

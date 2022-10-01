@@ -20,7 +20,7 @@ object Mover : PApplet() {
     override fun draw() {
         background(255)
         M.update()
-        M.edges()
+        //M.edges()
         M.display()
     }
 }
@@ -39,7 +39,7 @@ object M{
 
         velocity.add(acceleration)
         loc.add(velocity)
-        velocity.limit(5f)
+        //velocity.limit(5f)
     }
     fun edges() {
         if (loc.x > width) loc.x = 0f

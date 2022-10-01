@@ -3,6 +3,7 @@ import Mover.height
 import Mover.width
 import processing.core.PApplet
 import processing.core.PVector
+import javax.swing.text.html.HTML.Tag.P
 
 fun main(){
     Mover
@@ -15,7 +16,7 @@ object Mover : PApplet() {
     }
 
     override fun draw() {
-        background(255)
+        //background(255)
         M.update()
         M.ecc()
         M.edges()
@@ -25,13 +26,12 @@ object Mover : PApplet() {
 
 object M{
     val loc = PVector(width/2f, height/2f)
-    val velocity = PVector(.1f, .3f)
+    val velocity = PVector()
+    val acceleration = PVector()
 
     fun update() {
+        velocity.add(acceleration)
         loc.add(velocity)
-    }
-    fun ecc(){
-        velocity.mult(1.05f)
     }
     fun edges() {
         if (loc.x > width) loc.x = 0f

@@ -25,13 +25,13 @@ object Mover : PApplet() {
 
 object M{
     val loc = PVector(width/2f, height/2f)
-    val velocity = PVector(1f, 3f)
+    val velocity = PVector(.1f, .3f)
 
     fun update() {
         loc.add(velocity)
     }
     fun ecc(){
-        velocity.mult(1.005f)
+        velocity.mult(1.05f)
     }
     fun edges() {
         if (loc.x > width) loc.x = 0f

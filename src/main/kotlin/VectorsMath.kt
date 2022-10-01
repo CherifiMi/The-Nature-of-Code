@@ -26,7 +26,8 @@ object VectorsMath : PApplet() {
         mouse.sub(center)
 
 
-        scale.normalize().mult(mouse.mag()*2)
+        //scale.normalize().setMag(mouse.mag()*2)
+        scale.setMag(mouse.mag()*2)
 
         line(0f, 0f, mouse.x, mouse.y)
     }

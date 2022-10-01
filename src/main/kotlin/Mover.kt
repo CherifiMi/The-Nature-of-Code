@@ -26,9 +26,10 @@ object Mover : PApplet() {
 object M{
     val loc = PVector(width/2f, height/2f)
     val velocity = PVector()
-    val acceleration = PVector(.1f, 0f)
+    var acceleration = PVector(0f, 0f)
 
     fun update() {
+        acceleration = PVector.random2D()
         velocity.add(acceleration)
         loc.add(velocity)
     }

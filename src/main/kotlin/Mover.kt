@@ -1,9 +1,11 @@
 import Mover.ellipse
 import Mover.height
+import Mover.line
+import Mover.mouseX
+import Mover.mouseY
 import Mover.width
 import processing.core.PApplet
 import processing.core.PVector
-import javax.swing.text.html.HTML.Tag.P
 
 fun main(){
     Mover
@@ -26,12 +28,18 @@ object Mover : PApplet() {
 object M{
     val loc = PVector(width/2f, height/2f)
     val velocity = PVector()
-    var acceleration = PVector(0f, 0f).limit(5f)
+    var acceleration = PVector()
+    lateinit var mouse: PVector
 
     fun update() {
-        acceleration = PVector.random2D()
+        mouse= PVector(mouseX.toFloat(), mouseY.toFloat())
+        mouse.sub(loc)
+        mouse.setMag(.5f)
+        acceleration = mouse
+
         velocity.add(acceleration)
         loc.add(velocity)
+        velocity.limit(5f)
     }
     fun edges() {
         if (loc.x > width) loc.x = 0f
@@ -41,6 +49,7 @@ object M{
     }
     fun display() {
         ellipse(loc.x, loc.y, 50f, 50f)
+        line(loc.x, loc.y, mouseX.toFloat(), mouseY.toFloat())
     }
 
 }

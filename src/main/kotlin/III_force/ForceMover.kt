@@ -36,17 +36,11 @@ object FM{
         mouse= PVector(mouseX.toFloat(), mouseY.toFloat())
         mouse.sub(loc)
         mouse.setMag(.5f)
-        acceleration = mouse
+        //acceleration = mouse
 
         velocity.add(acceleration)
         loc.add(velocity)
         velocity.limit(5f)
-    }
-    fun edges() {
-        if (loc.x > width) loc.x = 0f
-        if (loc.x < 0) loc.x = width.toFloat()
-        if (loc.y > height) loc.y = 0f
-        if (loc.y < 0) loc.y = height.toFloat()
     }
     fun display() {
         ellipse(loc.x, loc.y, 50f, 50f)

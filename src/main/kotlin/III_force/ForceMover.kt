@@ -8,8 +8,9 @@ import III_force.ForceMover.mouseY
 import III_force.ForceMover.width
 import processing.core.PApplet
 import processing.core.PVector
+import kotlin.math.absoluteValue
 
-fun main(){
+fun main() {
     ForceMover
 }
 
@@ -18,36 +19,49 @@ object ForceMover : PApplet() {
         this.setSize(400, 400)
         this.runSketch()
     }
+
     override fun draw() {
         background(255)
         FM.applyForce()
         FM.update()
+        FM.edges()
         FM.display()
     }
 }
 
 
-object FM{
+object FM {
 
-    val loc = PVector(width/2f, height/2f)
+    val loc = PVector(width / 2f, height / 2f)
     val velocity = PVector()
     var acceleration = PVector()
-    var force = PVector(0f, 0.01f)
-    lateinit var mouse: PVector
+    var force = PVector(0.2f, 0.3f)
 
     fun update() {
-        mouse= PVector(mouseX.toFloat(), mouseY.toFloat())
-        mouse.sub(loc)
-        mouse.setMag(.5f)
-        //acceleration = mouse
-
         velocity.add(acceleration)
         loc.add(velocity)
-        velocity.limit(5f)
     }
+
     fun display() {
         ellipse(loc.x, loc.y, 50f, 50f)
-        line(loc.x, loc.y, mouseX.toFloat(), mouseY.toFloat())
+    }
+
+    fun edges() {
+        when {
+            loc.x > width -> {
+                loc.x = width.toFloat()
+                velocity.x *= -1
+            }
+            loc.x < 0 -> {
+                velocity.x *= -1
+                loc.x = 0f
+            }
+            loc.y > height -> {
+                velocity.y *= -1
+                loc.y = height.toFloat()
+            }
+        }
+
     }
 
     fun applyForce() {

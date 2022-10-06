@@ -20,7 +20,6 @@ object Mover : PApplet() {
     override fun draw() {
         background(255)
         M.update()
-        //M.edges()
         M.display()
     }
 }

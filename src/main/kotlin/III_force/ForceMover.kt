@@ -2,13 +2,9 @@ package III_force
 
 import III_force.ForceMover.ellipse
 import III_force.ForceMover.height
-import III_force.ForceMover.line
-import III_force.ForceMover.mouseX
-import III_force.ForceMover.mouseY
 import III_force.ForceMover.width
 import processing.core.PApplet
 import processing.core.PVector
-import kotlin.math.absoluteValue
 
 fun main() {
     ForceMover
@@ -22,7 +18,10 @@ object ForceMover : PApplet() {
 
     override fun draw() {
         background(255)
-        FM.applyForce()
+
+        var force = PVector(0.02f, 0.3f)
+        FM.applyForce(force)
+
         FM.update()
         FM.edges()
         FM.display()
@@ -35,7 +34,6 @@ object FM {
     val loc = PVector(width / 2f, height / 2f)
     val velocity = PVector()
     var acceleration = PVector()
-    var force = PVector(0.2f, 0.3f)
 
     fun update() {
         velocity.add(acceleration)
@@ -64,7 +62,7 @@ object FM {
 
     }
 
-    fun applyForce() {
+    fun applyForce(force: PVector) {
         acceleration = force
     }
 

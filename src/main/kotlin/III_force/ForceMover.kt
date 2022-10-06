@@ -20,6 +20,7 @@ object ForceMover : PApplet() {
     }
     override fun draw() {
         background(255)
+        FM.applyForce()
         FM.update()
         FM.display()
     }
@@ -27,9 +28,11 @@ object ForceMover : PApplet() {
 
 
 object FM{
+
     val loc = PVector(width/2f, height/2f)
     val velocity = PVector()
     var acceleration = PVector()
+    var force = PVector(0f, 0.01f)
     lateinit var mouse: PVector
 
     fun update() {
@@ -45,6 +48,10 @@ object FM{
     fun display() {
         ellipse(loc.x, loc.y, 50f, 50f)
         line(loc.x, loc.y, mouseX.toFloat(), mouseY.toFloat())
+    }
+
+    fun applyForce() {
+        acceleration = force
     }
 
 }

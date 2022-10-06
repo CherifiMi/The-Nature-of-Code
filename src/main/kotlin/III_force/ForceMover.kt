@@ -20,8 +20,9 @@ object ForceMover : PApplet() {
         background(255)
 
         var wind = PVector(0.2f, 0f)
-        FM.applyForce(wind)
         var g = PVector(0f, 0.2f)
+
+        FM.applyForce(wind)
         FM.applyForce(g)
 
 
@@ -41,7 +42,7 @@ object FM {
     fun update() {
         velocity.add(acceleration)
         loc.add(velocity)
-        acceleration = PVector()
+        acceleration.mult(0f)
     }
 
     fun display() {

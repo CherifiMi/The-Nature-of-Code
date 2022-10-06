@@ -19,11 +19,13 @@ object ForceMover : PApplet() {
     override fun draw() {
         background(255)
 
-        var wind = PVector(0.2f, 0f)
-        var g = PVector(0f, 0.2f)
+        var w = PVector(0.2f, 0f)
+        var g = PVector(0f, -0.3f)
 
-        FM.applyForce(wind)
         FM.applyForce(g)
+        if (mousePressed){
+            FM.applyForce(w)
+        }
 
 
         FM.update()
@@ -62,6 +64,10 @@ object FM {
             loc.y > height -> {
                 velocity.y *= -1
                 loc.y = height.toFloat()
+            }
+            loc.y < 0 -> {
+                velocity.y *= -1
+                loc.y = 0f
             }
         }
 

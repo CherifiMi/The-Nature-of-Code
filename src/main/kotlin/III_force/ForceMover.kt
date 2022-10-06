@@ -19,8 +19,11 @@ object ForceMover : PApplet() {
     override fun draw() {
         background(255)
 
-        var force = PVector(0.02f, 0.3f)
-        FM.applyForce(force)
+        var wind = PVector(0.2f, 0f)
+        FM.applyForce(wind)
+        var g = PVector(0f, 0.2f)
+        FM.applyForce(g)
+
 
         FM.update()
         FM.edges()
@@ -38,6 +41,7 @@ object FM {
     fun update() {
         velocity.add(acceleration)
         loc.add(velocity)
+        acceleration = PVector()
     }
 
     fun display() {
@@ -63,7 +67,7 @@ object FM {
     }
 
     fun applyForce(force: PVector) {
-        acceleration = force
+        acceleration.add(force)
     }
 
 }

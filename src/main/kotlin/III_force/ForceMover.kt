@@ -71,6 +71,7 @@ class FM {
             loc.y > height -> {
                 velocity.y *= -1
                 loc.y = height.toFloat()
+                velocity.div(1.1f)
             }
             loc.y < 0 -> {
                 velocity.y *= -1

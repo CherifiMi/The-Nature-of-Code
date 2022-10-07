@@ -43,10 +43,10 @@ object ForceMover : PApplet() {
 
 class FM {
 
-    val loc = PVector(width / 2f * random(-2f,2f), height / 2f)
+    val loc = PVector(random(width.toFloat()), height / 2f)
     val velocity = PVector()
     var acceleration = PVector()
-    var mass = random(1f, 2f)
+    var mass = random(.5f, 5f)
 
     fun update() {
         velocity.add(acceleration)

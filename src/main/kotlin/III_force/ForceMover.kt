@@ -29,10 +29,18 @@ object ForceMover : PApplet() {
 
         for (FM in FMS){
             FM.applyForce(g.mult(FM.mass))
-            if (mousePressed){
-                FM.applyForce(w)
-            }
+            FM.applyForce(w)
+
+
+            var friction = FM.velocity.get()
+            friction.normalize()
+            var c = -0.01f
+            friction.mult(c)
+
+            FM.applyForce(friction)
+
             FM.applyMass()
+
             FM.update()
             FM.edges()
             FM.display()
@@ -71,7 +79,6 @@ class FM {
             loc.y > height -> {
                 velocity.y *= -1
                 loc.y = height.toFloat()
-                velocity.div(1.1f)
             }
             loc.y < 0 -> {
                 velocity.y *= -1

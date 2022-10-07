@@ -29,7 +29,7 @@ object ForceMover : PApplet() {
 
         for (FM in FMS){
             FM.applyForce(g.mult(FM.mass))
-            FM.applyForce(w)
+            //FM.applyForce(w)
 
 
             var friction = FM.velocity.get()

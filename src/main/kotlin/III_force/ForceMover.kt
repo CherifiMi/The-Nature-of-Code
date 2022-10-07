@@ -19,7 +19,7 @@ object ForceMover : PApplet() {
     }
 
 
-    val FMS = listOf(FM(), FM(), FM(), FM(), FM(), FM())
+    val FMS = List(5){FM()}
 
     override fun draw() {
         background(255)

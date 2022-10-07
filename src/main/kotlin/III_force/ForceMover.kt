@@ -24,29 +24,19 @@ object ForceMover : PApplet() {
     override fun draw() {
         background(255)
 
-        var w = PVector(0.2f, 0f)
         var g = PVector(0f, 0.3f)
 
         for (FM in FMS){
             FM.applyForce(g.mult(FM.mass))
-            if (mousePressed){
-                FM.applyForce(w)
-            }
-
-
-            //var friction = FM.velocity.get()
-            //friction.normalize()
-            //var c = -0.01f
-            //friction.mult(c)
-            //FM.applyForce(friction)
-
 
             var drag = FM.velocity.get()
             drag.normalize()
-            var c = -0.01f
+            var c = -0.03f
             var speed = FM.velocity.magSq()
             drag.mult(c*speed)
-            FM.applyForce(drag)
+            if (mousePressed){
+                FM.applyForce(drag)
+            }
 
             FM.applyMass()
             FM.update()
@@ -58,8 +48,7 @@ object ForceMover : PApplet() {
 
 
 class FM {
-
-    val loc = PVector(random(width.toFloat()), height / 2f)
+    val loc = PVector(random(width.toFloat()), 0f)
     val velocity = PVector()
     var acceleration = PVector()
     var mass = random(1f, 2f)
@@ -100,7 +89,7 @@ class FM {
         acceleration.add(force)
     }
     fun applyMass(){
-        acceleration.mult(mass)
+        acceleration.div(mass)
     }
 
 }

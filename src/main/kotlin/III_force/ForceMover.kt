@@ -2,7 +2,9 @@ package III_force
 
 import III_force.ForceMover.ellipse
 import III_force.ForceMover.height
+import III_force.ForceMover.random
 import III_force.ForceMover.width
+import M.velocity
 import processing.core.PApplet
 import processing.core.PVector
 
@@ -16,30 +18,35 @@ object ForceMover : PApplet() {
         this.runSketch()
     }
 
+
+    val FMS = listOf(FM(), FM(), FM(), FM(), FM(), FM())
+
     override fun draw() {
         background(255)
 
         var w = PVector(0.2f, 0f)
-        var g = PVector(0f, -0.3f)
+        var g = PVector(0f, 0.3f)
 
-        FM.applyForce(g)
-        if (mousePressed){
-            FM.applyForce(w)
+        for (FM in FMS){
+            FM.applyForce(g)
+            if (mousePressed){
+                FM.applyForce(w)
+            }
+            FM.applyMass()
+            FM.update()
+            FM.edges()
+            FM.display()
         }
-
-
-        FM.update()
-        FM.edges()
-        FM.display()
     }
 }
 
 
-object FM {
+class FM {
 
-    val loc = PVector(width / 2f, height / 2f)
+    val loc = PVector(width / 2f * random(-2f,2f), height / 2f)
     val velocity = PVector()
     var acceleration = PVector()
+    var mass = random(1f, 2f)
 
     fun update() {
         velocity.add(acceleration)
@@ -48,7 +55,7 @@ object FM {
     }
 
     fun display() {
-        ellipse(loc.x, loc.y, 50f, 50f)
+        ellipse(loc.x, loc.y, 20f*mass, 20f* mass)
     }
 
     fun edges() {
@@ -75,6 +82,9 @@ object FM {
 
     fun applyForce(force: PVector) {
         acceleration.add(force)
+    }
+    fun applyMass(){
+        acceleration.div(mass)
     }
 
 }

@@ -28,7 +28,7 @@ object ForceMover : PApplet() {
         var g = PVector(0f, 0.3f)
 
         for (FM in FMS){
-            FM.applyForce(g)
+            FM.applyForce(g.mult(FM.mass))
             if (mousePressed){
                 FM.applyForce(w)
             }
@@ -46,7 +46,7 @@ class FM {
     val loc = PVector(random(width.toFloat()), height / 2f)
     val velocity = PVector()
     var acceleration = PVector()
-    var mass = random(.5f, 5f)
+    var mass = random(1f, 2f)
 
     fun update() {
         velocity.add(acceleration)

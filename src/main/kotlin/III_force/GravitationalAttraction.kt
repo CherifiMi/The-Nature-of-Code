@@ -4,6 +4,7 @@ package III_force
 import processing.core.PApplet
 import processing.core.PGraphics.G
 import processing.core.PVector
+import processing.event.KeyEvent
 
 fun main() {
     GravitationalAttraction
@@ -24,37 +25,47 @@ object GravitationalAttraction : PApplet() {
     var ms = mutableListOf<M>()
 
     override fun setup() {
-        ms.add(M(width / 2f, height / 2f, 5f))
+        ms.add(M(width / 2f, height / 2f, 20f))
     }
 
+    var filter = true
+
     override fun draw() {
-        background(100f)
+        //background(255)
+
+        if (filter) {
+            filter(BLUR, 1f)
+            filter(ERODE)
+        } else {
+            filter(BLUR, 1f)
+            filter(DILATE)
+        }
 
         for (m in ms) {
 
-            val gravity = PVector.sub(ms[0].loc,m.loc)
+            val gravity = PVector.sub(ms[0].loc, m.loc)
             val distance = constrain(gravity.mag(), 5f, 25f)
 
-            val p = (0.4f * m.mass * ms[0].mass) / (distance * distance)
+            val p = (.1f * m.mass * ms[0].mass) / (distance * distance)
             gravity.normalize()
             gravity.mult(p)
 
-            if (ms.indexOf(m)!=0){
+            if (ms.indexOf(m) != 0) {
                 m.applyForce(gravity)
-                val q = PVector(width/2f, height/2f).normalize()
-                line(q.x, q.y, m.loc.x, m.loc.y)
             }
 
             m.applyMass()
             m.update()
             m.display()
-
-
         }
     }
 
     override fun mouseClicked() {
-        ms.add(M(mouseX.toFloat(), mouseY.toFloat(), random(1f, 2f)))
+        ms.add(M(mouseX.toFloat(), mouseY.toFloat(), random(5f, 10f)))
+    }
+
+    override fun keyPressed() {
+        filter = !filter
     }
 }
 
@@ -63,6 +74,11 @@ class M(x: Float, y: Float, m: Float) {
     val loc = PVector(x, y)
     val velocity = PVector()
     var acceleration = PVector()
+    var color = PVector(
+        GravitationalAttraction.random(50f, 255f),
+        GravitationalAttraction.random(50f, 200f),
+        GravitationalAttraction.random(100f, 255f)
+    )
     val mass = m
 
     fun update() {
@@ -72,7 +88,15 @@ class M(x: Float, y: Float, m: Float) {
     }
 
     fun display() {
-        GravitationalAttraction.ellipse(loc.x, loc.y, 20f * mass, 20f * mass)
+        if (mass <= 10f) {
+            GravitationalAttraction.fill(color.x, color.y, color.z)
+            GravitationalAttraction.stroke(color.x, color.y, color.z)
+            GravitationalAttraction.strokeWeight(5f)
+        }else{
+            GravitationalAttraction.noFill()
+            GravitationalAttraction.noStroke()
+        }
+        GravitationalAttraction.ellipse(loc.x, loc.y, 2f * mass, 2f * mass)
     }
 
 

@@ -1,8 +1,9 @@
 package III_force
 
+
 import processing.core.PApplet
+import processing.core.PGraphics.G
 import processing.core.PVector
-import processing.event.MouseEvent
 
 fun main() {
     GravitationalAttraction
@@ -10,7 +11,7 @@ fun main() {
 
 
 // P = m*g  =>  g = 9.81m/s
-// G = (G*m1*m2)/d*d
+// G = ((G*m1*m2)/d*d)*r^
 object GravitationalAttraction : PApplet() {
 
     //region
@@ -23,16 +24,29 @@ object GravitationalAttraction : PApplet() {
     var ms = mutableListOf<M>()
 
     override fun setup() {
-        ms.add(M(width / 2f, height / 2f, 2f))
+        ms.add(M(width / 2f, height / 2f, 5f))
     }
 
     override fun draw() {
         background(100f)
 
         for (m in ms) {
+
+            val gravity = PVector.sub(ms[0].loc,m.loc)
+            val distance = gravity.mag()
+            val p = (10f * m.mass * ms[0].mass) / (distance * distance)
+            gravity.normalize()
+            gravity.mult(p)
+
+            if (ms.indexOf(m)!=0){
+                m.applyForce(gravity)
+            }
+
             m.applyMass()
             m.update()
             m.display()
+
+
         }
     }
 
@@ -46,7 +60,7 @@ class M(x: Float, y: Float, m: Float) {
     val loc = PVector(x, y)
     val velocity = PVector()
     var acceleration = PVector()
-    var mass = m
+    val mass = m
 
     fun update() {
         velocity.add(acceleration)
@@ -64,7 +78,7 @@ class M(x: Float, y: Float, m: Float) {
     }
 
     fun applyMass() {
-        acceleration.div(mass)
+        acceleration.mult(mass)
     }
 
 }

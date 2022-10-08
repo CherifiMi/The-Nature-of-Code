@@ -33,13 +33,16 @@ object GravitationalAttraction : PApplet() {
         for (m in ms) {
 
             val gravity = PVector.sub(ms[0].loc,m.loc)
-            val distance = gravity.mag()
-            val p = (10f * m.mass * ms[0].mass) / (distance * distance)
+            val distance = constrain(gravity.mag(), 5f, 25f)
+
+            val p = (0.4f * m.mass * ms[0].mass) / (distance * distance)
             gravity.normalize()
             gravity.mult(p)
 
             if (ms.indexOf(m)!=0){
                 m.applyForce(gravity)
+                val q = PVector(width/2f, height/2f).normalize()
+                line(q.x, q.y, m.loc.x, m.loc.y)
             }
 
             m.applyMass()

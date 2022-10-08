@@ -19,7 +19,7 @@ object ForceMover : PApplet() {
     }
 
 
-    val FMS = List(5){FM()}
+    val FMS = List(10){FM()}
 
     override fun draw() {
         background(255)
@@ -34,9 +34,7 @@ object ForceMover : PApplet() {
             var c = -0.03f
             var speed = FM.velocity.magSq()
             drag.mult(c*speed)
-            if (mousePressed){
-                FM.applyForce(drag)
-            }
+            FM.applyForce(drag)
 
             FM.applyMass()
             FM.update()

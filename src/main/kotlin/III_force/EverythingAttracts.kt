@@ -19,23 +19,15 @@ object EverythingAttracts : PApplet() {
     override fun draw() {
         background(255)
         balls.forEachIndexed { index, ball ->
-            /*val gravity = PVector.sub(GravitationalAttraction.ms[0].loc, m.loc)
-            val distance = constrain(gravity.mag(), 5f, 25f)
-            val p = (.1f * m.mass * GravitationalAttraction.ms[0].mass) / (distance * distance)
-            gravity.normalize()
-            gravity.mult(p)
 
-            if (GravitationalAttraction.ms.indexOf(m) != 0) {
-                m.applyForce(gravity)
-            }*/
             balls.forEachIndexed{i, b ->
                 if (i!=index){
-                    val gravity = PVector.sub(ball.loc, b.loc)
+                    val gravity = PVector.sub(b.loc, ball.loc)
                     val distance = constrain(gravity.mag(), 5f, 25f)
-                    val p = (.01f * b.mass * ball.mass) / (distance * distance)
+                    val p = (.01f * ball.mass * b.mass) / (distance * distance)
                     gravity.normalize()
                     gravity.mult(p)
-                    b.applyForce(gravity)
+                    ball.applyForce(gravity)
                 }
             }
 

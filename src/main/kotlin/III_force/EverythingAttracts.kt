@@ -14,7 +14,7 @@ object EverythingAttracts : PApplet() {
         this.runSketch()
     }
 
-    val balls = MutableList(20) { Ball(random(width.toFloat()), random(height.toFloat()), random(5f, 20f)) }
+    val balls = List(500) { Ball(random(width.toFloat()), random(height.toFloat()), random(1f, 10f)) }
 
     override fun draw() {
         background(255)
@@ -24,7 +24,7 @@ object EverythingAttracts : PApplet() {
                 if (i!=index){
                     val gravity = PVector.sub(ball.loc, b.loc)
                     val distance = constrain(gravity.mag(), 5f, 25f)
-                    val p = (.4f * b.mass * ball.mass) / (distance * distance)
+                    val p = (.04f * b.mass * ball.mass) / (distance * distance)
                     gravity.normalize()
                     gravity.mult(p)
                     b.applyForce(gravity)
@@ -54,8 +54,9 @@ class Ball(x: Float, y: Float, m: Float) {
 
     fun display() {
         EverythingAttracts.fill(100f, 90f)
-        EverythingAttracts.stroke(0f)
-        EverythingAttracts.strokeWeight(3f)
+        EverythingAttracts.noStroke()
+        //EverythingAttracts.stroke(0f)
+        //EverythingAttracts.strokeWeight(3f)
 
         EverythingAttracts.ellipse(loc.x, loc.y, 2f * mass, 2f * mass)
     }

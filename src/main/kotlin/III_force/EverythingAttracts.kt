@@ -24,7 +24,7 @@ object EverythingAttracts : PApplet() {
                 if (i!=index){
                     val gravity = PVector.sub(ball.loc, b.loc)
                     val distance = constrain(gravity.mag(), 5f, 25f)
-                    val p = (.01f * b.mass * ball.mass) / (distance * distance)
+                    val p = (.001f * b.mass * ball.mass) / (distance * distance)
                     gravity.normalize()
                     gravity.mult(p)
                     b.applyForce(gravity)

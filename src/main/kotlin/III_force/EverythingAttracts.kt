@@ -6,7 +6,6 @@ fun main(){
     EverythingAttracts
 }
 
-// TODO: 10/8/2022
 
 object EverythingAttracts : PApplet() {
     init {

@@ -55,8 +55,8 @@ class Ball(x: Float, y: Float, m: Float) {
     fun display() {
         EverythingAttracts.fill(100f, 90f)
         EverythingAttracts.noStroke()
-        //EverythingAttracts.stroke(0f)
-        //EverythingAttracts.strokeWeight(3f)
+        EverythingAttracts.stroke(0f)
+        EverythingAttracts.strokeWeight(3f)
 
         EverythingAttracts.ellipse(loc.x, loc.y, 2f * mass, 2f * mass)
     }

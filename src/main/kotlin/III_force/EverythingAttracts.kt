@@ -9,7 +9,6 @@ fun main() {
 
 }
 
-
 object EverythingAttracts : PApplet() {
     init {
         this.setSize(400, 400)

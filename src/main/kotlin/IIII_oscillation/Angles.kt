@@ -31,11 +31,13 @@ object Angles : PApplet() {
         rotate(angle)
         r++
 
+
+        rect(-50f, -50f, 100f, 100f)
+
         line(-x, -x,x, x)
 
         ellipse(-x, -x, y, y)
         ellipse(x, x, y, y)
-
 
     }
 }

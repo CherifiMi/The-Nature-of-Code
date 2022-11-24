@@ -32,7 +32,7 @@ object AMUR : PApplet() {
 
             val gravity = PVector.sub(ms[0].loc, m.loc)
             val distance = constrain(gravity.mag(), 5f, 25f)
-            val p = (.1f * m.mass * ms[0].mass) / (distance * distance)
+            val p = (.4f * m.mass * ms[0].mass) / (distance * distance)
             gravity.normalize()
             gravity.mult(p)
 
@@ -40,7 +40,6 @@ object AMUR : PApplet() {
 
             m.applyForce(gravity)
 
-            m.applyMass()
             m.update()
             m.display()
         }
@@ -63,7 +62,7 @@ class Mover(x: Float, y: Float, m: Float, b: Boolean = false) {
         velocity.add(acceleration)
         loc.add(velocity)
 
-        aAcceleration = acceleration.x.div(10)
+        aAcceleration = acceleration.x/10
         aVelocity += aAcceleration
         aVelocity = constrain(aVelocity,-0.1f,0.1f)
         angle += aVelocity
@@ -81,21 +80,18 @@ class Mover(x: Float, y: Float, m: Float, b: Boolean = false) {
             AMUR.stroke(0)
             AMUR.fill(175f,200f)
             AMUR.rectMode(CENTER)
-
             AMUR.pushMatrix()
+            AMUR.translate(loc.x ,loc.y)
             AMUR.rotate(angle)
-            AMUR.rect(loc.x, loc.y,2f * mass, 2f * mass)
+            AMUR.rect(0f,0f,mass*2,mass*2)
             AMUR.popMatrix()
         }
     }
 
 
     fun applyForce(force: PVector) {
-        acceleration.add(force)
-    }
-
-    fun applyMass() {
-        acceleration.mult(mass)
+        val f = PVector.div(force,mass)
+        acceleration.add(f)
     }
 
 }

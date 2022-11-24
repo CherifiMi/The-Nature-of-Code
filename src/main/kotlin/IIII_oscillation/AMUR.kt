@@ -18,7 +18,7 @@ object AMUR : PApplet() {
     var ms = mutableListOf<Mover>()
 
     override fun setup() {
-        ms.add(Mover(width / 2f, height / 2f, 20f, true))
+        ms.add(Mover(width / 2f, height / 2f, 40f, true))
 
         for (i in 1..20){
             ms.add(Mover(random(width.toFloat()), random(height.toFloat()), random(5f, 10f)))

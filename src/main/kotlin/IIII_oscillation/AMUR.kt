@@ -29,17 +29,13 @@ object AMUR : PApplet() {
         background(100f)
 
         for (m in ms) {
-
             val gravity = PVector.sub(ms[0].loc, m.loc)
             val distance = constrain(gravity.mag(), 5f, 25f)
             val p = (.4f * m.mass * ms[0].mass) / (distance * distance)
             gravity.normalize()
             gravity.mult(p)
 
-
-
             m.applyForce(gravity)
-
             m.update()
             m.display()
         }

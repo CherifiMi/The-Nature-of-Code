@@ -5,7 +5,6 @@ import processing.core.PApplet
 fun main(){
     Angles
 }
-// radians = 2 * PI * (degrees / 360)
 
 
 object Angles : PApplet() {
@@ -25,13 +24,35 @@ object Angles : PApplet() {
 
 
     override fun draw() {
-        background(100)
+        background(100f)
+
+        pushMatrix()
+
+        stroke(0)
+        rectMode(CENTER)
+        translate(width/2f,height/2f)
+        rotate(angle)
+
+
+        strokeWeight(3f)
+        line(-50f,0f,50f,0f)
+        ellipse(50f,0f,20f,20f)
+        ellipse(-50f,0f,20f,20f)
+
+
+        velocity += 0.0001f
+        angle += velocity
+
+        popMatrix()
+
+        pushMatrix()
 
         fill(175)
         stroke(0)
         rectMode(CENTER)
         translate(width/2f,height/2f)
         rotate(angle)
+
 
         strokeWeight(3f)
         line(-50f,0f,50f,0f)
@@ -41,5 +62,7 @@ object Angles : PApplet() {
 
         velocity += acceleration
         angle += velocity
+
+        popMatrix()
     }
 }

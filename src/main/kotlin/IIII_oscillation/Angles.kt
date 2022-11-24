@@ -19,21 +19,22 @@ object Angles : PApplet() {
 
     }
 
-    var x = 0f
+    var r = 0f
+    val x = 50f
+    var y = 30f
 
     override fun draw() {
         background(100)
 
         translate(width/2f, height/2f)
-
-
-
-        var angle = radians(x)
+        var angle = radians(r)
         rotate(angle)
+        r++
 
-        x++
+        line(-x, -x,x, x)
 
-        rect(-50f, -50f, 100f, 100f)
+        ellipse(-x, -x, y, y)
+        ellipse(x, x, y, y)
 
 
     }

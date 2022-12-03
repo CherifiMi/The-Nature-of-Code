@@ -1,6 +1,7 @@
 package IIII_oscillation
 
 import processing.core.PApplet
+import processing.core.PApplet.atan2
 import processing.core.PConstants.CENTER
 import processing.core.PConstants.CORNER
 import processing.core.PVector
@@ -52,7 +53,7 @@ object AM{
         if (loc.y < 0) loc.y = AngleMover.height.toFloat()
     }
     fun display() {
-        val angle = atan(velocity.y/ velocity.x)
+        val angle = atan2(velocity.y, velocity.x)
         AngleMover.stroke(0)
         AngleMover.strokeWeight(2f)
         AngleMover.fill(100f)

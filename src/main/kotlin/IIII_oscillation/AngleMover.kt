@@ -1,7 +1,6 @@
 package IIII_oscillation
 
 import processing.core.PApplet
-import processing.core.PApplet.atan2
 import processing.core.PConstants.CENTER
 import processing.core.PVector
 

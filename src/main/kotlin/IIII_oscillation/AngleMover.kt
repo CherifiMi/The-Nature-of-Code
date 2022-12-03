@@ -29,13 +29,15 @@ object AngleMover : PApplet() {
 
 
 object AM{
+
     val loc = PVector(AngleMover.width/2f, AngleMover.height/2f)
     val velocity = PVector()
     var acceleration = PVector()
     lateinit var mouse: PVector
 
     fun update() {
-        mouse= PVector(AngleMover.mouseX.toFloat(), AngleMover.mouseY.toFloat())
+        AngleMover.run {
+        mouse= PVector(mouseX.toFloat(), mouseY.toFloat())
         mouse.sub(loc)
         mouse.setMag(.5f)
         acceleration = mouse
@@ -43,25 +45,30 @@ object AM{
         velocity.add(acceleration)
         loc.add(velocity)
         velocity.limit(5f)
+        }
     }
     fun edges() {
-        if (loc.x > AngleMover.width) loc.x = 0f
-        if (loc.x < 0) loc.x = AngleMover.width.toFloat()
-        if (loc.y > AngleMover.height) loc.y = 0f
-        if (loc.y < 0) loc.y = AngleMover.height.toFloat()
+        AngleMover.run {
+        if (loc.x > width) loc.x = 0f
+        if (loc.x < 0) loc.x = width.toFloat()
+        if (loc.y > height) loc.y = 0f
+        if (loc.y < 0) loc.y = height.toFloat()
+        }
     }
     fun display() {
-        val angle = atan2(velocity.y, velocity.x)
-        AngleMover.stroke(0)
-        AngleMover.strokeWeight(2f)
-        AngleMover.fill(100f)
-        AngleMover.pushMatrix()
-        AngleMover.rectMode(CENTER)
-        AngleMover.translate(loc.x,loc.y)
-        AngleMover.rotate(angle)
-        AngleMover.rect(0f,0f, 50f, 20f)
-        AngleMover.popMatrix()
-        AngleMover.line(loc.x, loc.y, AngleMover.mouseX.toFloat(), AngleMover.mouseY.toFloat())
+        AngleMover.run {
+            val angle = velocity.heading()
+            stroke(0)
+            strokeWeight(2f)
+            fill(100f)
+            pushMatrix()
+            rectMode(CENTER)
+            translate(loc.x,loc.y)
+            rotate(angle)
+            rect(0f,0f, 50f, 20f)
+            popMatrix()
+            line(loc.x, loc.y, mouseX.toFloat(), mouseY.toFloat())
+        }
     }
 
 }

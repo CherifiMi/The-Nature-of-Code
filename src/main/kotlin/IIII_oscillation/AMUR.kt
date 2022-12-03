@@ -21,14 +21,16 @@ object AMUR : PApplet() {
         ms.add(Mover(width / 2f, height / 2f, 20f, true))
 
         for (i in 1..40){
-            ms.add(Mover(random(width.toFloat()), random(height.toFloat()), random(5f, 10f)))
+            ms.add(Mover(random(width.toFloat()), random(height.toFloat()), random(.1f, 2f)))
         }
     }
 
     override fun draw() {
-        //filter(BLUR, .1f)
-        background(100f)
 
+        rectMode(CORNER)
+        noStroke()
+        fill(255f,5f)
+        rect(0f,0f,width.toFloat(),height.toFloat())
         for (m in ms) {
             val gravity = PVector.sub(ms[0].loc, m.loc)
             val distance = constrain(gravity.mag(), 5f, 25f)
@@ -40,6 +42,7 @@ object AMUR : PApplet() {
             m.update()
             m.display()
         }
+
     }
 }
 
@@ -53,7 +56,7 @@ class Mover(x: Float, y: Float, m: Float, b: Boolean = false) {
     var aAcceleration = 0f
 
     val mass = m
-    val b = b
+    val isAttractor = b
 
     fun update() {
         velocity.add(acceleration)
@@ -71,8 +74,10 @@ class Mover(x: Float, y: Float, m: Float, b: Boolean = false) {
     fun display() {
 
         AMUR.strokeWeight(2f)
-        if (b){
-            AMUR.ellipse(loc.x, loc.y, 2f * mass, 2f * mass)
+        if (isAttractor){
+            AMUR.stroke(0)
+            AMUR.fill(175f,200f)
+            AMUR.ellipse(loc.x, loc.y,  mass,  mass)
         }else{
             AMUR.stroke(0)
             AMUR.fill(175f,200f)
@@ -80,7 +85,7 @@ class Mover(x: Float, y: Float, m: Float, b: Boolean = false) {
             AMUR.pushMatrix()
             AMUR.translate(loc.x ,loc.y)
             AMUR.rotate(angle)
-            AMUR.rect(0f,0f,mass*2,mass*2)
+            AMUR.rect(0f,0f,mass*16,mass*16)
             AMUR.popMatrix()
         }
     }

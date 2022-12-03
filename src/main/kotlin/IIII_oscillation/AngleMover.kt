@@ -23,7 +23,7 @@ object AngleMover : PApplet() {
         rect(0f,0f, width.toFloat(), height.toFloat())
 
         AM.update()
-        //AM.edges()
+        AM.edges()
         AM.display()
     }
 }
@@ -62,6 +62,7 @@ object AM{
         AngleMover.rotate(angle)
         AngleMover.rect(0f,0f, 50f, 20f)
         AngleMover.popMatrix()
+        AngleMover.line(loc.x, loc.y, AngleMover.mouseX.toFloat(), AngleMover.mouseY.toFloat())
     }
 
 }

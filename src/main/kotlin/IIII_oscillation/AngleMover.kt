@@ -66,7 +66,7 @@ object AM{
             rotate(angle)
             rect(0f,0f, 50f, 20f)
             popMatrix()
-            line(loc.x, loc.y, mouseX.toFloat(), mouseY.toFloat())
+            //line(loc.x, loc.y, mouseX.toFloat(), mouseY.toFloat())
         }
     }
 

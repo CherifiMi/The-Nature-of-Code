@@ -20,14 +20,20 @@ object Angles : PApplet() {
 
     var angle = 0f
     var velocity = 0f
-    var acceleration = 0.001f
+    var acceleration = 0.0001f
 
 
     override fun draw() {
-        background(100f)
+        //background(100f)
+
+        rectMode(CORNER)
+        noStroke()
+        fill(255f,5f)
+        rect(0f,0f, width.toFloat(), height.toFloat())
 
         pushMatrix()
 
+        fill(175)
         stroke(0)
         rectMode(CENTER)
         translate(width/2f,height/2f)
@@ -40,7 +46,7 @@ object Angles : PApplet() {
         ellipse(-50f,0f,20f,20f)
 
 
-        velocity += 0.0001f
+        velocity += acceleration
         angle += velocity
 
         popMatrix()

@@ -31,6 +31,7 @@ object AMUR : PApplet() {
         noStroke()
         fill(255f,5f)
         rect(0f,0f,width.toFloat(),height.toFloat())
+
         for (m in ms) {
             val gravity = PVector.sub(ms[0].loc, m.loc)
             val distance = constrain(gravity.mag(), 5f, 25f)

@@ -44,25 +44,5 @@ object Angles : PApplet() {
         angle += velocity
 
         popMatrix()
-
-        pushMatrix()
-
-        fill(175)
-        stroke(0)
-        rectMode(CENTER)
-        translate(width/2f,height/2f)
-        rotate(angle)
-
-
-        strokeWeight(3f)
-        line(-50f,0f,50f,0f)
-        ellipse(50f,0f,20f,20f)
-        ellipse(-50f,0f,20f,20f)
-
-
-        velocity += acceleration
-        angle += velocity
-
-        popMatrix()
     }
 }

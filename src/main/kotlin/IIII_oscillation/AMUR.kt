@@ -26,6 +26,7 @@ object AMUR : PApplet() {
     }
 
     override fun draw() {
+        //filter(BLUR, .1f)
         background(100f)
 
         for (m in ms) {

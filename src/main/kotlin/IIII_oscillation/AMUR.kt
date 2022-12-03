@@ -20,7 +20,7 @@ object AMUR : PApplet() {
     override fun setup() {
         ms.add(Mover(width / 2f, height / 2f, 20f, true))
 
-        for (i in 1..40){
+        for (i in 1..20){
             ms.add(Mover(random(width.toFloat()), random(height.toFloat()), random(.1f, 2f)))
         }
     }
@@ -38,7 +38,9 @@ object AMUR : PApplet() {
             gravity.normalize()
             gravity.mult(p)
 
-            m.applyForce(gravity)
+            if (!m.isAttractor){
+                m.applyForce(gravity)
+            }
             m.update()
             m.display()
         }

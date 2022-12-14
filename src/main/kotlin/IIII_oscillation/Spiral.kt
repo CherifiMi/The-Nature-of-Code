@@ -3,10 +3,10 @@ package IIII_oscillation
 import processing.core.PApplet
 
 fun main(){
-    spiral
+    Spiral
 }
 
-object spiral : PApplet() {
+object Spiral : PApplet() {
     init {
         this.setSize(400, 400)
         this.runSketch()
@@ -21,8 +21,8 @@ object spiral : PApplet() {
     var theta = 0f
 
     override fun draw() {
-        var x = r * cos(theta)
-        var y = r * sin(theta)
+        val x = r * cos(theta)
+        val y = r * sin(theta)
 
         translate(width /2f, height /2f)
 

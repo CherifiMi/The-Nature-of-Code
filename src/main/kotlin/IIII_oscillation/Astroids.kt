@@ -20,6 +20,9 @@ object Astroids : PApplet() {
     private val ship = Ship
 
     override fun draw() {
+
+        background(200)
+
         ship.update()
         ship.edge()
         ship.display()

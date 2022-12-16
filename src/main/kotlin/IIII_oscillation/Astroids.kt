@@ -63,11 +63,18 @@ object Ship {
 
     fun edge() {
         val buffer = r*2
-
+        when{
+            position.x > width + buffer -> position.x = -buffer
+            position.x < - buffer -> position.x = width+buffer
+            position.y > height + buffer -> position.y = -buffer
+            position.y < - buffer -> position.y = height+buffer
+        }
     }
 
     fun display() {
+        with(Astroids){
 
+        }
     }
 
     fun turn(f: Float) {

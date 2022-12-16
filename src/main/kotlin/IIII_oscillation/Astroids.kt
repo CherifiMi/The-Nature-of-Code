@@ -33,23 +33,18 @@ object Astroids : PApplet() {
 
 object Ship {
 
-    var position: PVector
-    var velocity: PVector
-    var acceleration: PVector
+    val width = Astroids.width
+    val height = Astroids.height
+
+    var position = PVector(width /2f, width /2f)
+    var velocity = PVector()
+    var acceleration = PVector()
 
     var damping = 0.995.toFloat()
     var topspeed = 6f
     var heading = 0f
     var r = 16f
     var thrusting = false
-
-    init {
-        with(Astroids){
-            position = PVector(width/2f,width/2f)
-            velocity = PVector()
-            acceleration = PVector()
-        }
-    }
 
     fun update() {
         velocity.add(acceleration)
@@ -67,6 +62,7 @@ object Ship {
     }
 
     fun edge() {
+        val buffer = r*2
 
     }
 

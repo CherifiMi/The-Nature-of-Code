@@ -26,7 +26,7 @@ object Astroids : PApplet() {
             when (keyCode) {
                 LEFT -> ship.turn(-0.03f)
                 RIGHT -> ship.turn(0.03f)
-                Z -> ship.thrust()
+                SHIFT -> ship.thrust()
             }
     }
 }
@@ -73,7 +73,18 @@ object Ship {
 
     fun display() {
         with(Astroids){
+            strokeWeight(2f)
+            stroke(0)
 
+            pushMatrix()
+            translate(position.x, position.y)
+            rotate(heading)
+            fill(175)
+            if (thrusting) fill(255f, 0f, 0f)
+            rect(-r/2, r, r/3, r/2)
+            popMatrix()
+
+            thrusting=false
         }
     }
 

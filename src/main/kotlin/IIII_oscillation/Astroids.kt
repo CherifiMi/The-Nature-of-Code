@@ -1,6 +1,7 @@
 package IIII_oscillation
 
 import processing.core.PApplet
+import processing.core.PConstants.CENTER
 import processing.core.PVector
 import kotlin.math.PI
 import kotlin.math.cos
@@ -82,6 +83,14 @@ object Ship {
             fill(175)
             if (thrusting) fill(255f, 0f, 0f)
             rect(-r/2, r, r/3, r/2)
+            rect(r/2, r, r/3, r/2)
+            fill(175)
+            beginShape()
+            vertex(-r,r)
+            vertex(0f,-r)
+            vertex(r,r)
+            endShape()
+            rectMode(CENTER)
             popMatrix()
 
             thrusting=false

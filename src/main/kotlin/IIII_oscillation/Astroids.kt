@@ -2,6 +2,9 @@ package IIII_oscillation
 
 import processing.core.PApplet
 import processing.core.PVector
+import kotlin.math.PI
+import kotlin.math.cos
+import kotlin.math.sin
 
 fun main() {
     Astroids
@@ -76,7 +79,11 @@ object Ship {
     }
 
     fun thrust() {
-
+        val angle = heading - PI.toFloat()/2
+        val force = PVector(cos(angle), sin(angle))
+        force.mult(0.1f)
+        applyForce(force)
+        thrusting = true
     }
 
 }

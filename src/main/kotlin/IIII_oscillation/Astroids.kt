@@ -56,6 +56,13 @@ object Ship {
         acceleration.mult(0f)
     }
 
+    // Newton's law: F = M * A
+    fun applyForce(force: PVector) {
+        val f = force.get()
+        //f.div(mass); // ignoring mass right now
+        acceleration.add(f)
+    }
+
     fun edge() {
 
     }
@@ -65,7 +72,7 @@ object Ship {
     }
 
     fun turn(f: Float) {
-
+        heading+=f
     }
 
     fun thrust() {

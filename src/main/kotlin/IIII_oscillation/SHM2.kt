@@ -18,8 +18,13 @@ object SHM2 : PApplet() {
 
     override fun draw() {
         with(SHM2){
-            background(255)
-            val amp = 120f
+
+            rectMode(CORNER)
+            noStroke()
+            fill(255f,5f)
+            rect(0f,0f, width.toFloat(), height.toFloat())
+
+            val amp = 100f
             val x = amp * cos(angle)
             angle += aVelocity
 
@@ -28,7 +33,7 @@ object SHM2 : PApplet() {
             fill(175)
             translate(width/2f,height/2f)
             line(0f,0f,x,0f)
-            ellipse(x,0f,20f,20f)
+            ellipse(x,0f,40f,40f)
         }
     }
 }

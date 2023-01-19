@@ -19,7 +19,7 @@ object Oscillator : PApplet() {
     val oscs = mutableListOf<Osc>()
 
     override fun setup() {
-        for (i in 1..20){
+        for (i in 1..10){
             oscs.add(Osc())
         }
     }
@@ -28,7 +28,7 @@ object Oscillator : PApplet() {
         with(Oscillator){
             rectMode(CORNER)
             noStroke()
-            fill(100f,20f)
+            fill(100f,2f)
             rect(0f,0f, width.toFloat(), height.toFloat())
 
             ellipseMode(CENTER)
@@ -57,7 +57,7 @@ class Osc(){
             loc.x = amp * cos(angle.x)
             loc.y = amp * cos(angle.y)
 
-            line(0f, 0f, loc.x, loc.y)
+            //line(0f, 0f, loc.x, loc.y)
             ellipse(loc.x, loc.y, 30f, 30f)
         }
     }

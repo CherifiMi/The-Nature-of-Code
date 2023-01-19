@@ -19,13 +19,13 @@ object SHM : PApplet() {
 
     override fun draw() {
         with(SHM){
-            background(100f)
+            //background(100f,1f)
 
             translate(width/2f,height/2f)
 
             strokeWeight(3f)
             ellipse(loc.x,loc.y,50f,50f)
-            line(loc.x,loc.y,0f,0f)
+            //line(loc.x,loc.y,0f,0f)
 
 
             loc.y = amp * sin(PI * frameCount / per)

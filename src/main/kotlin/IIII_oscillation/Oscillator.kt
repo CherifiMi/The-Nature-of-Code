@@ -10,8 +10,6 @@ fun main(){
     Oscillator
 }
 
-var amp = 120f
-
 object Oscillator : PApplet() {
     init {
         this.setSize(400, 400)
@@ -21,20 +19,16 @@ object Oscillator : PApplet() {
     val oscs = mutableListOf<Osc>()
 
     override fun setup() {
-        for (i in 1..5){
+        for (i in 1..10){
             oscs.add(Osc())
         }
-    }
-
-    override fun mouseClicked() {
-        amp*=2
     }
 
     override fun draw() {
         with(Oscillator){
             rectMode(CORNER)
             noStroke()
-            fill(100f,2f)
+            fill(255f,2f)
             rect(0f,0f, width.toFloat(), height.toFloat())
 
             ellipseMode(CENTER)
@@ -54,17 +48,18 @@ object Oscillator : PApplet() {
 class Osc(){
 
     val angle = PVector()
+    val amp = PVector(random(50f,150f),random(50f,150f))
     val velocity = PVector(random(-0.05f,0.05f),random(-0.05f,0.05f))
 
     val loc = PVector()
 
     fun display(){
         with(Oscillator){
-            loc.x = amp * cos(angle.x)
-            loc.y = amp * cos(angle.y)
+            loc.x = amp.x * cos(angle.x)
+            loc.y = amp.y * cos(angle.y)
 
-            //line(0f, 0f, loc.x, loc.y)
-            ellipse(loc.x, loc.y, 30f, 30f)
+            line(0f, 0f, loc.x, loc.y)
+            ellipse(loc.x, loc.y, 40f, 40f)
         }
     }
     fun oscillate(){

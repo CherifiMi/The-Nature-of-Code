@@ -19,7 +19,7 @@ object SHM : PApplet() {
 
     override fun draw() {
         with(SHM){
-            //background(100f,1f)
+            background(100f)
 
             translate(width/2f,height/2f)
 
@@ -28,7 +28,7 @@ object SHM : PApplet() {
             //line(loc.x,loc.y,0f,0f)
 
 
-            loc.y = amp * sin(PI * frameCount / per)
+            loc.y = amp * sin(TWO_PI * frameCount / per)
             loc.x = amp * cos(TWO_PI * frameCount / per)
         }
     }

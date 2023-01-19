@@ -58,7 +58,7 @@ class Osc(){
             loc.y = amp * cos(angle.y)
 
             line(0f, 0f, loc.x, loc.y)
-            ellipse(loc.x, loc.y, 20f, 20f)
+            ellipse(loc.x, loc.y, 30f, 30f)
         }
     }
     fun oscillate(){

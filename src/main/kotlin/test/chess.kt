@@ -19,9 +19,6 @@ object chess : PApplet() {
 
     }
 
-    //var img = loadImage("data/bb.png")
-    var img = loadImage("bb.png")
-
     override fun draw() {
 
         Chess2.let {
@@ -33,7 +30,6 @@ object chess : PApplet() {
             drawPieces()
         }
 
-        image(img, 0f,0f)
 
 
     }

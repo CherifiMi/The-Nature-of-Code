@@ -20,6 +20,8 @@ dependencies {
     implementation(files("libs/gluegen-rt-natives-windows-i586.jar"))
     implementation(files("libs/jogl-all-natives-windows-amd64.jar"))
     implementation(files("libs/jogl-all.jar"))
+    //implementation(files("libs/exp4j-0.4.8.jar"))
+    implementation(files("libs/exp4j-0.3.2.jar"))
 }
 
 tasks.test {

@@ -1,11 +1,13 @@
 package A_D_S
 
-
 fun main() {
-    ctime()
+    cspace()
 }
 
 //region complexity
+fun cspace(){
+
+}
 
 fun ctime() {
     // O(1): constant time, same time regardless of input size
@@ -28,10 +30,33 @@ fun ctime() {
             }
         }
     }
+
+    // : logarithemic time, can use shortcuts,
+    fun containL(list: List<Int>, num: Int): Boolean{ // O(n): see all values
+        for (i in list){
+            if (i==num) return true
+        }
+        return false
+    }
+    fun containLog(list: List<Int>, num: Int): Boolean{ // O(log n): see only half values
+        val midI = list.size/2
+        if (num <= list[midI]) {
+            for (i in 0..midI){
+                if (list[i]==num) return true
+            }
+        }else{
+            for (i in midI until list.size){
+                if (list[i]==num) return true
+            }
+        }
+
+        return false
+    }
+    // O(n log n): quasilinear time, worse than linear but better than quadratic
+    fun sortK(list: List<Int>){
+        list.sorted()
+    }
 }
-
-
-
 //endregion
 
 // region range

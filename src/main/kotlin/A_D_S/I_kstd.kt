@@ -19,6 +19,15 @@ fun ctime() {
             println(name)
         }
     }
+
+    // O(n^2): quadratic time, n squared, takes a square of the input size
+    fun multiplicationBoard(size: Int){
+        for(num in 1..size){
+            for (num2 in 1..size){
+                println("$num x $num2 = ${num*num2}")
+            }
+        }
+    }
 }
 
 

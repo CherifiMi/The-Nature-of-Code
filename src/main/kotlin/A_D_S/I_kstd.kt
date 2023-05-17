@@ -1,8 +1,16 @@
 package A_D_S
 
 fun main() {
-    cspace()
+    node()
 }
+
+//region linked list
+data class Node<T>
+
+fun node(){
+
+}
+//endregion
 
 //region complexity
 fun cspace(){

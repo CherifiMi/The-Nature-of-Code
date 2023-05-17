@@ -2,8 +2,23 @@ package A_D_S
 
 
 fun main() {
+    ctime()
 }
 
+//region complexity
+
+fun ctime() {
+    // O(1): constant time, same time regardless of input size
+    fun checkFirst(name: List<String>){
+        println(name.first())
+    }
+
+    // O(n): linear time,
+}
+
+
+
+//endregion
 
 // region range
 fun x(bottom: Int = 1, top: Int = 100): Int = (top..bottom).filter { it % 2 == 0 }.sum()

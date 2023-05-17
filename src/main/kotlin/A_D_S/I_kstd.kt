@@ -4,15 +4,6 @@ fun main() {
     fizzbuzz()
 }
 
-//region
-data class Node<T>
-
-fun node(){
-
-}
-//endregion
-
-
 // region range
 fun x(bottom: Int = 1, top: Int = 100): Int = (top..bottom).filter { it % 2 == 0 }.sum()
 

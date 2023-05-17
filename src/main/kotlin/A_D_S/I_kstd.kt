@@ -6,7 +6,40 @@ fun main() {
 
 //region complexity
 fun cspace(){
+    // O(n): males new list with the same size
+    fun printSorted(numbers: List<Int>) {
+        val sorted = numbers.sorted()
+        for (element in sorted) {
+            println(element)
+        }
+    }
 
+    // O(1): only allocates memory for a few vars
+    fun printSorted2(numbers: List<Int>){
+        if (numbers.isEmpty()) return
+
+        var currentCount = 0
+        var minValue = Int.MIN_VALUE
+
+        for (value in numbers){
+            if (value == minValue){
+                println(value)
+                currentCount++
+            }
+        }
+
+        while (currentCount<numbers.size){
+            var currentValue = numbers.max()!!
+
+            for(value in numbers){
+                if(value==currentValue && value>minValue){
+                    println(value)
+                    currentCount++
+                }
+            }
+            minValue=currentValue
+        }
+    }
 }
 
 fun ctime() {

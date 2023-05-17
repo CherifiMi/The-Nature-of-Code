@@ -9,11 +9,16 @@ fun main() {
 
 fun ctime() {
     // O(1): constant time, same time regardless of input size
-    fun checkFirst(name: List<String>){
-        println(name.first())
+    fun checkFirst(names: List<String>){
+        println(names.first())
     }
 
-    // O(n): linear time,
+    // O(n): linear time, running time is the same as the data size
+    fun printName(names: List<String>){
+        for(name in names){
+            println(name)
+        }
+    }
 }
 
 

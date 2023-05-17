@@ -1,9 +1,14 @@
 package A_D_S
 
 fun main() {
-    node()
+    linked_list()
 }
 
+fun linked_list() {
+
+}
+
+//region node
 data class Node<T>(var value: T, var next: Node<T>? = null) {
     override fun toString(): String {
         return if (next != null) {
@@ -13,8 +18,6 @@ data class Node<T>(var value: T, var next: Node<T>? = null) {
         }
     }
 }
-
-
 fun node() {
     val node1 = Node(value = 1)
     val node2 = Node(value = 2)
@@ -25,3 +28,4 @@ fun node() {
 
     println(node1)
 }
+//endregion

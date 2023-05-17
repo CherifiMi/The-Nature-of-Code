@@ -1,7 +1,6 @@
 package A_D_S
 
 
-
 fun main() {
     println(fizzbuzz())
 }

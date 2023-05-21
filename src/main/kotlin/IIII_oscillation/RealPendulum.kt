@@ -1,9 +1,9 @@
 package IIII_oscillation
 
 import processing.core.PApplet
+import processing.core.PApplet.radians
 import processing.core.PVector
-import kotlin.math.cos
-import kotlin.math.sin
+import kotlin.math.*
 
 fun main(){
     RealPendulum
@@ -15,7 +15,9 @@ object RealPendulum : PApplet() {
         this.runSketch()
     }
 
-    val P = Pend(PVector(width/2f, 50f), 200f)
+    var originM = PVector(width/2f, 100f)
+    val P = Pend(originM, 200f)
+    val P2 = Pend(P.location, 100f)
 
     override fun setup() {
 
@@ -23,18 +25,29 @@ object RealPendulum : PApplet() {
 
     override fun draw() {
         background(255)
-        P.update()
-        P.display()
+        P.go()
+        P2.go()
+    }
+
+    override fun mousePressed() {
+        if (mousePressed && P.mouse_near_ball()){
+            P.isStuck = true
+        }
+    }
+    override fun mouseReleased() {
+        P.isStuck = false
     }
 }
 
 class Pend(var origin: PVector, var r : Float) {
-    var angle = 10f
+    var angle = 100f
     var aVelocity = 0f
     var aAcceleration = 0f
     var gravity = 0.4
     var location = PVector()
     var dumping = 0.995f
+
+    var isStuck = false
 
     fun update(){
         aAcceleration = ((-1* gravity/r )* sin(angle)).toFloat()
@@ -53,49 +66,37 @@ class Pend(var origin: PVector, var r : Float) {
             strokeWeight(2f)
             line(origin.x, origin.y,location.x, location.y)
 
-            if (mousePressed && mouse_near_ball()) {
+            if (isStuck) {
                 fill(0)
 
-                aVelocity = 0f
+                //aVelocity = 0f
 
-                if (location.x-mouseX > 10){
-                    aVelocity = - 0.1f
-                }
-
-
-                if (mouseX- location.x > 10){
-                    aVelocity = + 0.1f
-                }
-
-                /*if (location.x == mouseX.toFloat()){
-                    aVelocity = 0f
-                }
-                else if (mouseX > location.x){
-                    aVelocity -= 1f
-                }
-                else if (mouseX<location.x){
-                    aVelocity -= 1f
-                }*/
+                var c2 = PVector.sub(origin,PVector(mouseX.toFloat(), mouseY.toFloat()))
+                angle = atan2(-1*c2.y,c2.x) - radians(90f)
 
             }  else {
                 fill(175)
             }
 
 
-            ellipse(location.x, location.y, 40f,40f)
+            ellipse(location.x, location.y, 20f,20f)
         }
     }
 
-    private fun mouse_near_ball(): Boolean {
+    fun mouse_near_ball(): Boolean {
         with(RealPendulum){
-            if (
-                mouseX <= location.x + 25 && mouseX >= location.x -25
-                &&
-                mouseY <= location.y + 25 && mouseY >= location.y -25
-            ){
+            var x = abs(mouseX-location.x)
+            var y = abs(mouseY-location.y)
+
+            if (x<24 && y<25){
                 return true
             }
             return false
         }
+    }
+
+    fun go() {
+        update()
+        display()
     }
 }

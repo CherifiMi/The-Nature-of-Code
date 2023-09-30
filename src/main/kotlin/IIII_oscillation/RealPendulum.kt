@@ -17,7 +17,6 @@ object RealPendulum : PApplet() {
 
     var originM = PVector(width/2f, 100f)
     val P = Pend(originM, 200f)
-    val P2 = Pend(P.location, 100f)
 
     override fun setup() {
 
@@ -26,7 +25,6 @@ object RealPendulum : PApplet() {
     override fun draw() {
         background(255)
         P.go()
-        P2.go()
     }
 
     override fun mousePressed() {
@@ -40,12 +38,12 @@ object RealPendulum : PApplet() {
 }
 
 class Pend(var origin: PVector, var r : Float) {
-    var angle = 100f
+    var angle = 300f
     var aVelocity = 0f
     var aAcceleration = 0f
-    var gravity = 0.4
+    var gravity = 0.4f
     var location = PVector()
-    var dumping = 0.995f
+    var dumping = 0.997f
 
     var isStuck = false
 
@@ -79,7 +77,7 @@ class Pend(var origin: PVector, var r : Float) {
             }
 
 
-            ellipse(location.x, location.y, 20f,20f)
+            ellipse(location.x, location.y, 40f,40f)
         }
     }
 
